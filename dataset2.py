@@ -106,6 +106,7 @@ class FGSBIR_Dataset2(data.Dataset):
             #     self.Train_GT_subdirectories.remove(".DS_Store")
             # import pdb; pdb.set_trace()
             sketch_path = self.Sketch_images[item]
+            path = '/'.join(sketch_path.split('/')[-3:-1]) + '/' + sketch_path.split('/')[-1].split('.')[0]
 
 
             # only imafge name
@@ -154,13 +155,13 @@ class FGSBIR_Dataset2(data.Dataset):
 
             sample = {
                 "sketch_img": sketch_img,
-                "sketch_path": sketch_path,
+                "sketch_path": path,
                 "positive_img": positive_img,
                 "positive_path": positive_sample,
                 "negative_img": negative_img,
                 "negative_path": negative_sample,
             }
-            # import pdb; pdb.set_trace()
+            import pdb; pdb.set_trace()
 
             # sketch_path = positive_path
 
@@ -170,6 +171,7 @@ class FGSBIR_Dataset2(data.Dataset):
             #     self.Test_GT_subdirectories.remove(".DS_Store")
 
             sketch_path = self.Sketch_images[item]
+            path = '/'.join(sketch_path.split('/')[-3:-1]) + '/' + sketch_path.split('/')[-1].split('.')[0]
 
             # get class of the positive sample
             # cur_img = Image.open(sketch_path).convert("L")
@@ -189,7 +191,7 @@ class FGSBIR_Dataset2(data.Dataset):
 
             sample = {
                 "sketch_img": sketch_img,
-                "sketch_path": sketch_path,
+                "sketch_path": path,
                 # "Coordinate": vector_x,
                 "positive_img": positive_img,
                 "positive_path": positive_sample,

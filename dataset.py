@@ -82,7 +82,7 @@ class FGSBIR_Dataset(data.Dataset):
 
             sample = {'sketch_img': sketch_img, 'sketch_path': sketch_path, 'Coordinate':vector_x,
                       'positive_img': positive_img, 'positive_path': positive_sample}
-            
+            # import pdb; pdb.set_trace()
 
         return sample
 
@@ -101,8 +101,11 @@ def get_dataloader(hp):
     #                                      num_workers=0)
 
     dataset_Test  = FGSBIR_Dataset(hp, mode = 'Test')
+    # dataloader_Test = data.DataLoader(dataset_Test, batch_size=1, shuffle=False,
+    #                                      num_workers=int(hp.nThreads))
     dataloader_Test = data.DataLoader(dataset_Test, batch_size=1, shuffle=False,
-                                         num_workers=int(hp.nThreads))
+                                         num_workers=0)
+                                         
 
     return dataloader_Train, dataloader_Test
 

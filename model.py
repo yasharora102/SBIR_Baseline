@@ -54,8 +54,9 @@ class FGSBIR_Model(nn.Module):
 
         for num, sketch_feature in enumerate(Sketch_Feature_ALL):
             s_name = Sketch_Name[num]
-            import pdb; pdb.set_trace()
-            sketch_query_name = '_'.join(s_name.split('/')[-1].split('_')[:-1])
+            # import pdb; pdb.set_trace()
+            # sketch_query_name = '_'.join(s_name.split('/')[-1].split('_')[:-1])
+            sketch_query_name = s_name.split('/')[-1]
             position_query = Image_Name.index(sketch_query_name)
 
             distance = F.pairwise_distance(sketch_feature.unsqueeze(0), Image_Feature_ALL)
